@@ -17,7 +17,6 @@
 2. Copy URL to your browser to import configuration script.
 
 ```
-# This Repo (open in safari)
 karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chenyiAlone/Capslock-Plus/master/capslock-plus.json
 ```
 
