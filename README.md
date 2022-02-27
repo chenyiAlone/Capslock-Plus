@@ -18,7 +18,7 @@
 
 ```
 # This Repo (open in safari)
-karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/BryanHoo/Capslock-Plus/master/capslock-plus.json
+karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chenyiAlone/Capslock-Plus/master/capslock-plus.json
 ```
 
 3. Open Karabiner, Tab "ComplexModification", Button "Add Item", and enable entries you like.
