@@ -63,6 +63,31 @@
                         }
                     ],
                     "type": "basic"
+                },
+                {
+                    "description": "cpas_lock + enter => 向下插入一行",
+                    "from": {
+                        "key_code": "return_or_enter"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "left_cmd"
+                            ]
+                        },
+                        {
+                            "key_code": "return_or_enter"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
                 }
             ]
         },
@@ -489,7 +514,12 @@
                 {
                     "description": "cpas_lock + cmd + w => 向左删除单词",
                     "from": {
-                        "key_code": "w"
+                        "key_code": "w",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
                     },
                     "to": [
                         {
@@ -528,9 +558,14 @@
                     "type": "basic"
                 },
                 {
-                    "description": "cpas_lock + i => 向右删除一个单词",
+                    "description": "cpas_l + i => 向右删除一个单词",
                     "from": {
-                        "key_code": "r"
+                        "key_code": "r",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
                     },
                     "to": [
                         {
