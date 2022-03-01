@@ -7,10 +7,11 @@
     "import_url": "karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/chenyiAlone/Capslock-Plus/master/capslock-plus.json",
     "rules": [
         {
-            "description": "CapsLock to Hyper/Escape",
+            "description": "CapsLock to conditions",
             "manipulators": [
                 {
                     "type": "basic",
+                    "description": "cpas_lock down",
                     "from": {
                         "key_code": "caps_lock",
                         "modifiers": {
@@ -21,131 +22,133 @@
                     },
                     "to": [
                         {
-                            "key_code": "right_shift",
-                            "modifiers": [
-                                "right_command",
-                                "right_control",
-                                "right_option"
-                            ]
+                            "set_variable": {
+                                "name": "capslox",
+                                "value": 1
+                            }
+                        }
+                    ],
+                    "to_after_key_up": [
+                        {
+                            "set_variable": {
+                                "name": "capslox",
+                                "value": 0
+                            }
                         }
                     ],
                     "to_if_alone": [
                         {
-                            "key_code": "escape"
+                            "set_variable": {
+                                "name": "capslox",
+                                "value": 0
+                            }
                         }
                     ]
                 },
                 {
+                    "description": "cpas_lock + spacebar => 回车",
                     "from": {
-                        "key_code": "spacebar",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "spacebar"
                     },
                     "to": [
                         {
                             "key_code": "return_or_enter"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 }
             ]
         },
         {
-            "description": "Hyper Cursor navigation",
+            "description": "Capslox Cursor",
             "manipulators": [
                 {
+                    "description": "cpas_lock + e => 上移",
                     "from": {
-                        "key_code": "e",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "e"
                     },
                     "to": [
                         {
                             "key_code": "up_arrow"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + d => 下移",
                     "from": {
-                        "key_code": "d",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "d"
                     },
                     "to": [
                         {
                             "key_code": "down_arrow"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + s => 左移",
                     "from": {
-                        "key_code": "s",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "s"
                     },
                     "to": [
                         {
                             "key_code": "left_arrow"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + f => 右移",
                     "from": {
-                        "key_code": "f",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "f"
                     },
                     "to": [
                         {
                             "key_code": "right_arrow"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + p => 移动到行首",
                     "from": {
-                        "key_code": "p",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "p"
                     },
                     "to": [
                         {
@@ -155,41 +158,19 @@
                             ]
                         }
                     ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "semicolon",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
+                    "conditions": [
                         {
-                            "key_code": "right_arrow",
-                            "modifiers": [
-                                "left_command"
-                            ]
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + cmd + p => 移动到页首",
                     "from": {
-                        "key_code": "y",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "p"
                     },
                     "to": [
                         {
@@ -199,19 +180,41 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + ; => 移动到行尾",
                     "from": {
-                        "key_code": "b",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
+                        "key_code": "semicolon"
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "left_command"
                             ]
                         }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "cpas_lock + cmd + ; => 移动到页尾",
+                    "from": {
+                        "key_code": "semicolon"
                     },
                     "to": [
                         {
@@ -221,19 +224,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + a => 左移一个单词",
                     "from": {
-                        "key_code": "a",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "a"
                     },
                     "to": [
                         {
@@ -243,19 +246,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + g => 右移一个单词",
                     "from": {
-                        "key_code": "g",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "g"
                     },
                     "to": [
                         {
@@ -263,6 +266,13 @@
                             "modifiers": [
                                 "left_option"
                             ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
                         }
                     ],
                     "type": "basic"
@@ -270,19 +280,12 @@
             ]
         },
         {
-            "description": "Hyper selected Navigation",
+            "description": "Capslox selected",
             "manipulators": [
                 {
+                    "description": "cpas_lock + i => 向上选中",
                     "from": {
-                        "key_code": "i",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "i"
                     },
                     "to": [
                         {
@@ -292,19 +295,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + k => 向下选中",
                     "from": {
-                        "key_code": "k",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "k"
                     },
                     "to": [
                         {
@@ -314,19 +317,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + j => 向左选中",
                     "from": {
-                        "key_code": "j",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "j"
                     },
                     "to": [
                         {
@@ -336,19 +339,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + l => 向右选中",
                     "from": {
-                        "key_code": "l",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "l"
                     },
                     "to": [
                         {
@@ -358,19 +361,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + u => 选中至行首",
                     "from": {
-                        "key_code": "u",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "u"
                     },
                     "to": [
                         {
@@ -381,19 +384,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + o => 选中至行尾",
                     "from": {
-                        "key_code": "o",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "o"
                     },
                     "to": [
                         {
@@ -404,19 +407,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + h => 向左选中一个单词",
                     "from": {
-                        "key_code": "h",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "h"
                     },
                     "to": [
                         {
@@ -427,19 +430,19 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + . => 向右中一个单词",
                     "from": {
-                        "key_code": "n",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "period"
                     },
                     "to": [
                         {
@@ -450,113 +453,11 @@
                             ]
                         }
                     ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "Hyper More",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "delete_or_backspace",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
+                    "conditions": [
                         {
-                            "key_code": "delete_or_backspace",
-                            "modifiers": [
-                                "left_command"
-                            ]
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "return_or_enter",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "return_or_enter",
-                            "modifiers": [
-                                "left_command"
-                            ]
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "slash",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "key_code": "tab",
-                            "modifiers": [
-                                "left_control"
-                            ]
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "t",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open -a 'iTerm 2'"
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "m",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open -a 'finder'"
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
                         }
                     ],
                     "type": "basic"
@@ -567,36 +468,28 @@
             "description": "Hyper Delete",
             "manipulators": [
                 {
+                    "description": "cpas_lock + w => 向左删除",
                     "from": {
-                        "key_code": "w",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "w"
                     },
                     "to": [
                         {
                             "key_code": "delete_or_backspace"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + cmd + w => 向左删除单词",
                     "from": {
-                        "key_code": "w",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_command",
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "w"
                     },
                     "to": [
                         {
@@ -606,39 +499,38 @@
                             ]
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + r => 向右删除",
                     "from": {
-                        "key_code": "r",
-                        "modifiers": {
-                            "mandatory": [
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "r"
                     },
                     "to": [
                         {
                             "key_code": "delete_forward"
                         }
                     ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
                     "type": "basic"
                 },
                 {
+                    "description": "cpas_lock + i => 向右删除一个单词",
                     "from": {
-                        "key_code": "r",
-                        "modifiers": {
-                            "mandatory": [
-                                "left_command",
-                                "right_command",
-                                "right_control",
-                                "right_shift",
-                                "right_option"
-                            ]
-                        }
+                        "key_code": "r"
                     },
                     "to": [
                         {
@@ -646,6 +538,138 @@
                             "modifiers": [
                                 "left_option"
                             ]
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "cpas_lock + [ => 删除至行首",
+                    "from": {
+                        "key_code": "open_bracket"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "left_shift",
+                                "left_command"
+                            ]
+                        },
+                        {
+                            "key_code": "delete_forward"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "cpas_lock + / => 删除至行尾",
+                    "from": {
+                        "key_code": "open_bracket"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "left_shift",
+                                "left_command"
+                            ]
+                        },
+                        {
+                            "key_code": "delete_forward"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "description": "cpas_lock + delete => 删除当前行",
+                    "from": {
+                        "key_code": "delete_or_backspace"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "left_command"
+                            ]
+                        },
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "left_shift",
+                                "left_command"
+                            ]
+                        },
+                        {
+                            "key_code": "delete_or_backspace"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                }
+            ]
+        },
+        {
+            "description": "Capslox Application",
+            "manipulators": [
+                {
+                    "from": {
+                        "key_code": "t"
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'iTerm 2'"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "from": {
+                        "key_code": "m"
+                    },
+                    "to": [
+                        {
+                            "shell_command": "open -a 'finder'"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "type": "variable_if",
+                            "name": "capslox",
+                            "value": 1
                         }
                     ],
                     "type": "basic"
