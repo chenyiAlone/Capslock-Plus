@@ -73,7 +73,7 @@
                         {
                             "key_code": "right_arrow",
                             "modifiers": [
-                                "left_cmd"
+                                "left_command"
                             ]
                         },
                         {
