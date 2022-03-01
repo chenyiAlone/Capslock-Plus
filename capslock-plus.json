@@ -578,18 +578,18 @@
                 {
                     "description": "cpas_lock + / => 删除至行尾",
                     "from": {
-                        "key_code": "open_bracket"
+                        "key_code": "slash"
                     },
                     "to": [
                         {
-                            "key_code": "left_arrow",
+                            "key_code": "right_arrow",
                             "modifiers": [
                                 "left_shift",
                                 "left_command"
                             ]
                         },
                         {
-                            "key_code": "delete_forward"
+                            "key_code": "delete_or_backspace"
                         }
                     ],
                     "conditions": [
