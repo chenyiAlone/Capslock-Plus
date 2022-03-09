@@ -26,7 +26,7 @@
                     ],
                     "to": [
                         {
-                            "set_varible": {
+                            "set_variable": {
                                 "name": "capslox",
                                 "value": 1
                             }
@@ -150,7 +150,7 @@
                     ],
                     "description": "cpas_lock + t => 上移 10 行",
                     "from": {
-                        "key_code": "t"s
+                        "key_code": "t"
                     },
                     "to": [
                         {
@@ -704,6 +704,35 @@
                         }
                     ],
                     "description": "cpas_lock + . => 向右中一个单词",
+                    "from": {
+                        "key_code": "comma"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow",
+                            "modifiers": [
+                                "left_option"
+                            ]
+                        },
+                        {
+                            "key_code": "right_arrow",
+                            "modifiers": [
+                                "left_option",
+                                "left_shift"
+                            ]
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + , => 选中当前单词",
                     "from": {
                         "key_code": "period"
                     },
