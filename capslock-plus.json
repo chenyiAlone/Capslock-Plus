@@ -10,7 +10,6 @@
             "description": "CapsLock to conditions",
             "manipulators": [
                 {
-                    "type": "basic",
                     "description": "cpas_lock down",
                     "from": {
                         "key_code": "caps_lock",
@@ -20,9 +19,14 @@
                             ]
                         }
                     },
+                    "to_if_alone": [
+                        {
+                            "key_code": "escape"
+                        }
+                    ],
                     "to": [
                         {
-                            "set_variable": {
+                            "set_varible": {
                                 "name": "capslox",
                                 "value": 1
                             }
@@ -36,16 +40,16 @@
                             }
                         }
                     ],
-                    "to_if_alone": [
-                        {
-                            "set_variable": {
-                                "name": "capslox",
-                                "value": 0
-                            }
-                        }
-                    ]
+                    "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + spacebar => 回车",
                     "from": {
                         "key_code": "spacebar"
@@ -55,16 +59,16 @@
                             "key_code": "return_or_enter"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + enter => 向下插入一行",
                     "from": {
                         "key_code": "return_or_enter"
@@ -80,13 +84,6 @@
                             "key_code": "return_or_enter"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 }
             ]
@@ -95,6 +92,13 @@
             "description": "Capslox Cursor",
             "manipulators": [
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + e => 上移",
                     "from": {
                         "key_code": "e"
@@ -104,16 +108,92 @@
                             "key_code": "up_arrow"
                         }
                     ],
+                    "type": "basic"
+                },
+                {
                     "conditions": [
                         {
-                            "type": "variable_if",
                             "name": "capslox",
+                            "type": "variable_if",
                             "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + e => 上移 3 行",
+                    "from": {
+                        "key_code": "e",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + t => 上移 10 行",
+                    "from": {
+                        "key_code": "t"s
+                    },
+                    "to": [
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        },
+                        {
+                            "key_code": "up_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + d => 下移",
                     "from": {
                         "key_code": "d"
@@ -123,16 +203,92 @@
                             "key_code": "down_arrow"
                         }
                     ],
+                    "type": "basic"
+                },
+                {
                     "conditions": [
                         {
-                            "type": "variable_if",
                             "name": "capslox",
+                            "type": "variable_if",
                             "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + cmd + d => 下移",
+                    "from": {
+                        "key_code": "d",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + b => 下移 10 行",
+                    "from": {
+                        "key_code": "b"
+                    },
+                    "to": [
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        },
+                        {
+                            "key_code": "down_arrow"
+                        }
+                    ],
+                    "type": "basic"
+                },
+                {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + s => 左移",
                     "from": {
                         "key_code": "s"
@@ -142,16 +298,52 @@
                             "key_code": "left_arrow"
                         }
                     ],
+                    "type": "basic"
+                },
+                {
                     "conditions": [
                         {
-                            "type": "variable_if",
                             "name": "capslox",
+                            "type": "variable_if",
                             "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + cmd + s => 左移 5 行",
+                    "from": {
+                        "key_code": "s",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_arrow"
+                        },
+                        {
+                            "key_code": "left_arrow"
+                        },
+                        {
+                            "key_code": "left_arrow"
+                        },
+                        {
+                            "key_code": "left_arrow"
+                        },
+                        {
+                            "key_code": "left_arrow"
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + f => 右移",
                     "from": {
                         "key_code": "f"
@@ -161,38 +353,82 @@
                             "key_code": "right_arrow"
                         }
                     ],
+                    "type": "basic"
+                },
+                {
                     "conditions": [
                         {
-                            "type": "variable_if",
                             "name": "capslox",
+                            "type": "variable_if",
                             "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + cmd + f => 右移 5 个字符",
+                    "from": {
+                        "key_code": "f",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "right_arrow"
+                        },
+                        {
+                            "key_code": "right_arrow"
+                        },
+                        {
+                            "key_code": "right_arrow"
+                        },
+                        {
+                            "key_code": "right_arrow"
+                        },
+                        {
+                            "key_code": "right_arrow"
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + p => 移动到行首",
                     "from": {
                         "key_code": "p"
                     },
                     "to": [
                         {
-                            "key_code": "home"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
+                            "key_code": "a",
+                            "modifiers": [
+                                "left_control"
+                            ]
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + cmd + p => 移动到页首",
                     "from": {
-                        "key_code": "p"
+                        "key_code": "p",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
                     },
                     "to": [
                         {
@@ -202,38 +438,46 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + ; => 移动到行尾",
                     "from": {
                         "key_code": "semicolon"
                     },
                     "to": [
                         {
-                            "key_code": "end"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
+                            "key_code": "e",
+                            "modifiers": [
+                                "left_control"
+                            ]
                         }
                     ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + cmd + ; => 移动到页尾",
                     "from": {
-                        "key_code": "semicolon"
+                        "key_code": "semicolon",
+                        "modifiers": {
+                            "mandatory": [
+                                "left_command"
+                            ]
+                        }
                     },
                     "to": [
                         {
@@ -243,16 +487,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + a => 左移一个单词",
                     "from": {
                         "key_code": "a"
@@ -265,16 +509,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + g => 右移一个单词",
                     "from": {
                         "key_code": "g"
@@ -287,13 +531,6 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 }
             ]
@@ -302,6 +539,13 @@
             "description": "Capslox selected",
             "manipulators": [
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + i => 向上选中",
                     "from": {
                         "key_code": "i"
@@ -314,16 +558,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + k => 向下选中",
                     "from": {
                         "key_code": "k"
@@ -336,16 +580,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + j => 向左选中",
                     "from": {
                         "key_code": "j"
@@ -358,16 +602,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + l => 向右选中",
                     "from": {
                         "key_code": "l"
@@ -380,16 +624,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + u => 选中至行首",
                     "from": {
                         "key_code": "u"
@@ -403,16 +647,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + o => 选中至行尾",
                     "from": {
                         "key_code": "o"
@@ -426,16 +670,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + h => 向左选中一个单词",
                     "from": {
                         "key_code": "h"
@@ -449,16 +693,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + . => 向右中一个单词",
                     "from": {
                         "key_code": "period"
@@ -472,21 +716,21 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 }
             ]
         },
         {
-            "description": "Hyper Delete",
+            "description": "Capslox Delete",
             "manipulators": [
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + w => 向左删除",
                     "from": {
                         "key_code": "w"
@@ -496,16 +740,16 @@
                             "key_code": "delete_or_backspace"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + cmd + w => 向左删除单词",
                     "from": {
                         "key_code": "w",
@@ -523,16 +767,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + r => 向右删除",
                     "from": {
                         "key_code": "r"
@@ -542,17 +786,17 @@
                             "key_code": "delete_forward"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
-                    "description": "cpas_l + i => 向右删除一个单词",
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
+                    "description": "cpas_lock + cmd + r => 向右删除一个单词",
                     "from": {
                         "key_code": "r",
                         "modifiers": {
@@ -569,16 +813,16 @@
                             ]
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + [ => 删除至行首",
                     "from": {
                         "key_code": "open_bracket"
@@ -595,16 +839,16 @@
                             "key_code": "delete_forward"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + / => 删除至行尾",
                     "from": {
                         "key_code": "slash"
@@ -621,16 +865,16 @@
                             "key_code": "delete_or_backspace"
                         }
                     ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
                     "type": "basic"
                 },
                 {
+                    "conditions": [
+                        {
+                            "name": "capslox",
+                            "type": "variable_if",
+                            "value": 1
+                        }
+                    ],
                     "description": "cpas_lock + delete => 删除当前行",
                     "from": {
                         "key_code": "delete_or_backspace"
@@ -651,54 +895,6 @@
                         },
                         {
                             "key_code": "delete_or_backspace"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
-                    "type": "basic"
-                }
-            ]
-        },
-        {
-            "description": "Capslox Application",
-            "manipulators": [
-                {
-                    "from": {
-                        "key_code": "t"
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open -a 'iTerm 2'"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
-                        }
-                    ],
-                    "type": "basic"
-                },
-                {
-                    "from": {
-                        "key_code": "m"
-                    },
-                    "to": [
-                        {
-                            "shell_command": "open -a 'finder'"
-                        }
-                    ],
-                    "conditions": [
-                        {
-                            "type": "variable_if",
-                            "name": "capslox",
-                            "value": 1
                         }
                     ],
                     "type": "basic"
